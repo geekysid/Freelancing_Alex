@@ -1,5 +1,15 @@
-#!/user/local/bin/python3
+#!/user/local/bin/python3 -W ignore::DeprecationWarning
 
+
+########################################
+#                                      #
+#   SCRAPER FOR HOPI - ATTENDEE DATA   #
+#           By: SIDDHANT SHAH          #
+#             Dt: 08-10-2020           #
+#     siddhant.shah.1986@gmail.com     #
+#   **Just for Educational Purpose**   #
+#                                      #
+########################################
 
 # important imports
 from selenium import webdriver
@@ -11,7 +21,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from termcolor import cprint
 from datetime import datetime
 import pandas as pd
-import json, time, os, csv
+import json, time, os, csv, pyfiglet
 
 
 # global variables
@@ -22,14 +32,16 @@ WAIT_TIME = 600       # Time to wait for ndes to be loaded
 
 
 def intro_deco():
-    print("\n\n")
-    print("\t", '#'*40)
-    print("\t", "#           SCRAPER FOR HOPIN          #")
-    print("\t", "#           By: SIDDHANT SHAH          #")
-    print("\t", "#             Dt: 02-10-2020           #")
-    print("\t", "#     siddhant.shah.1986@gmail.com     #")
-    print("\t", "#   **Just for Educational Purpose**   #")
-    print("\t", '#'*40)
+    print()
+    print(pyfiglet.figlet_format(' GeekySid'))
+    print()
+    print(" ", '#'*40)
+    print(" ", "#   SCRAPER FOR HOPI - ATTENDEE DATA   #")
+    print(" ", "#           By: SIDDHANT SHAH          #")
+    print(" ", "#             Dt: 08-10-2020           #")
+    print(" ", "#     siddhant.shah.1986@gmail.com     #")
+    print(" ", "#   **Just for Educational Purpose**   #")
+    print(" ", '#'*40)
     print()
 
 
@@ -43,7 +55,7 @@ def get_browser_instance(headless=False):
     # Starting web browser
     CHROME_DRIVER_PATH = '/home/siddhant/Documents/Freelancing/chromedriver'
     BROWSER = webdriver.Chrome(executable_path=CHROME_DRIVER_PATH, options=chrome_options)
-    BROWSER.get('https://hopin.to/corporate_redeem/78e4d4d1-618b-4a53-89c1-04bbca069083')
+    BROWSER.get('https://hopin.to/events/')
 
 
 # saving file to csv
